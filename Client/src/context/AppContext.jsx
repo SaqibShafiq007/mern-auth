@@ -11,6 +11,8 @@ export const AppContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); 
     const [userData, setUserData] = useState(false);  
 
+    console.log("Current Backend URL:", backendUrl);
+
 
     const getUserData =  async () =>{
         try {
@@ -20,7 +22,7 @@ export const AppContextProvider = (props) => {
             if(data.success){
                 setUserData(data.userData);
             }else{
-                toast.error(error.message)
+                toast.error(data.message)
 
             }
             
@@ -37,9 +39,7 @@ export const AppContextProvider = (props) => {
                 setIsLoggedIn(true);
                 await getUserData();
             }
-            else{
-                toast.error(data.message)
-            }
+           
         } catch (error) {
             toast.error(error.message)
             

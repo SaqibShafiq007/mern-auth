@@ -48,7 +48,7 @@ function Login() {
                  getUserData();
                 navigate('/');
             } else {
-                toast.error(error.message)
+                toast.error(data.message)
             }
         }
 
